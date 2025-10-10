@@ -1,0 +1,467 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>OPTIKA Student Chapter - Aditya University, Surampalem</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Birthstone&family=Hurricane&display=swap" rel="stylesheet">
+
+<!-- ============ Fonts (optional) ============ -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700;900&display=swap" rel="stylesheet">
+
+<!-- ============ Styles (advanced, responsive, animated) ============ -->
+<style>
+  :root{
+    --accent1: #00e5ff;
+    --accent2: #00ffc2;
+    --glass: rgba(255,255,255,0.06);
+    --card-bg: rgba(6,12,22,0.65);
+    --text: #e7fbff;
+    --danger: #ff6b6b;
+    --success: #baf7d6;
+    --nav-bg: rgba(0,0,0,0.5);
+  }
+  *{box-sizing:border-box}
+  html,body{height:100%;margin:0;font-family:'Poppins',sans-serif;background:#05060a;color:var(--text);-webkit-font-smoothing:antialiased}
+  .bg{
+    position:fixed;inset:0;background-image: url('backgroundO.png');
+    background-size:cover;background-position:center;background-repeat:no-repeat;z-index:-3;
+    transform:translateZ(0);
+  }
+  .overlay{position:fixed;inset:0;background:linear-gradient(180deg, rgba(0,0,0,0.35), rgba(0,0,0,0.6));z-index:-2}
+  .page{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;padding:36px 20px}
+  header{width:100%;max-width:1200px;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:8px 12px}
+  .logo{display:flex;flex-direction:column;align-items:flex-start;gap:2px}
+  .logo h1{font-size:18px;letter-spacing:1px;margin:0;text-transform:uppercase;font-weight:800;color:var(--text)}
+  .logo p{margin:0;font-size:12px;color:rgba(230,250,255,0.85)}
+  nav{display:flex;gap:12px}
+  nav button{background:transparent;border:1px solid rgba(255,255,255,0.08);padding:8px 14px;border-radius:10px;color:var(--text);cursor:pointer;font-weight:600;backdrop-filter:blur(6px)}
+  nav button.active{background:linear-gradient(90deg,var(--accent1),var(--accent2));color:#001820;border:none;box-shadow:0 6px 24px rgba(0,200,255,0.08)}
+  .hero{width:100%;max-width:1200px;display:flex;flex-direction:column;align-items:center;gap:18px;padding-top:18px}
+  .hero-center{display:flex;flex-direction:column;align-items:center;gap:12px;padding:36px 18px}
+  .hero-title{
+    font-size:42px;line-height:1;letter-spacing:1px;font-weight:900;text-align:center;
+    color:var(--text);
+    position:relative;
+    text-transform:uppercase;
+  }
+  .hero-title .word{display:inline-block;position:relative;overflow:visible}
+  .scroll-hint{font-size:14px;color:rgba(200,255,255,0.85);opacity:0.95;cursor:pointer;user-select:none;transition:opacity 0.4s ease}
+  .laser-slice{display:inline-block;transform-origin:center;transition:transform .8s cubic-bezier(.22,.9,.32,1),opacity .6s}
+  .hero-underline{height:2px;width:140px;background:linear-gradient(90deg,var(--accent1),var(--accent2));border-radius:6px}
+  .content {
+    background: rgba(0,0,0,0.5);
+    backdrop-filter: blur(8px);
+    width: 100%;
+    max-width: 1000px;
+    margin-top: 22px;
+    border-radius: 14px;
+    padding: 18px;
+    box-shadow: 0 8px 40px rgba(0,0,0,0.5);
+    opacity: 0;
+    transform: translateY(18px);
+    transition: all 0.8s ease;
+  }
+  .content.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .about{display:flex;gap:18px;align-items:flex-start;flex-wrap:wrap}
+  .about .text{flex:1;min-width:260px}
+  .about h3{margin:0 0 8px 0;color:var(--text);font-size:18px}
+  .about p{margin:0;color:rgba(230,250,255,0.9);line-height:1.5}
+  .events-grid{display:flex;gap:18px;flex-wrap:wrap;margin-top:18px}
+  .event-card{width:220px;height:220px;border-radius:12px;overflow:hidden;position:relative;background:#111;border:1px solid rgba(255,255,255,.04);cursor:pointer;box-shadow:0 6px 30px rgba(0,0,0,0.5);display:flex;align-items:center;justify-content:center;transition:transform 0.3s ease}
+  .event-card:hover{transform: scale(1.05);box-shadow: 0 10px 40px rgba(0, 150, 255, 0.7);}
+  .event-card img{width:100%;height:100%;object-fit:cover;display:block;pointer-events:none}
+  .event-card .title{position:absolute;left:12px;bottom:12px;color:white;background:linear-gradient(90deg,rgba(0,0,0,0.35),transparent);padding:8px 12px;border-radius:8px;font-weight:700;pointer-events:none}
+  .flow {
+    width:360px;min-width:300px;
+    background: rgba(0,0,0,0.5);
+    backdrop-filter: blur(8px);
+    padding:18px;border-radius:12px;
+    display:flex;flex-direction:column;gap:12px;align-self:flex-start}
+  .flow label{font-weight:600;color:#bff7ff}
+  .flow input[type="text"]{padding:12px;border-radius:10px;border:none;outline:none;background:rgba(255,255,255,0.95);font-weight:600;text-align:center}
+  .btn{padding:12px;border-radius:10px;border:none;background:linear-gradient(90deg,var(--accent1),var(--accent2));color:#001820;font-weight:800;cursor:pointer}
+  .muted{color:rgba(220,250,255,0.85);font-size:14px}
+  .msg{min-height:22px;font-size:14px}
+  .dots{display:inline-block;vertical-align:middle;margin-left:8px}
+  .dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:white;margin:0 3px;opacity:.18;animation:dot 1s infinite}
+  .dot:nth-child(1){animation-delay:0s}.dot:nth-child(2){animation-delay:.15s}.dot:nth-child(3){animation-delay:.30s}
+  @keyframes dot{0%{opacity:.18;transform:translateY(0)}50%{opacity:1;transform:translateY(-6px)}100%{opacity:.18;transform:translateY(0)}}
+  .theme-a .hero-title{color:#e7fbff}
+  .theme-b .hero-title{color:#ffe9d6}
+  .theme-c .hero-title{color:#dbeffd}
+  @media (max-width:980px){
+    .about{flex-direction:column}
+    .events-grid{justify-content:center}
+    .flow{width:100%}
+  }
+  footer{margin-top:18px;color:rgba(200,250,255,0.6);font-size:13px;text-align:center;padding-bottom:18px}
+  .hidden{display:none}
+  .laser-break .laser-slice{transform:translateY(-30px) rotateX(40deg) skewX(8deg) translateX(6px);opacity:0}
+  .reveal{opacity:1;transform:none}
+</style>
+</head>
+<body class="theme-a">
+
+<!-- Background -->
+<div class="bg" aria-hidden="true"></div>
+<div class="overlay" aria-hidden="true"></div>
+
+<div class="page">
+  <!-- Header -->
+  <header>
+    <div class="logo">
+      <h1>OPTIKA Student Chapter</h1>
+      <p>Aditya University, Surampalem</p>
+    </div>
+    <nav>
+      <button id="navEvents" class="active">EVENTS</button>
+      <button id="navRegs">REGISTRATIONS</button>
+    </nav>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero" id="hero">
+    <div class="hero-center">
+      <div class="hero-title" id="heroTitle" aria-hidden="false">
+        OPTIKA Student Chapter - Aditya University, Surampalem
+      </div>
+      <div class="hero-underline"></div>
+      <div class="scroll-hint" id="scrollHint">Scroll to continue ↓</div>
+    </div>
+  </section>
+
+  <!-- Content container -->
+  <main class="content" id="mainContent" tabindex="-1" style="margin-bottom:18px;opacity:0;transform:translateY(18px);transition:all .8s ease;">
+    <div style="display:flex;gap:18px;align-items:flex-start;flex-wrap:wrap">
+      <!-- Left: about + events -->
+      <div style="flex:1;min-width:320px">
+        <div class="about">
+          <div class="text">
+            <h3>What is OPTICA?</h3>
+            <p>OPTICA is an international, non-profit professional organization focused on advancing optics and photonics. Our student chapter conducts events, workshops and competitions. This portal allows participants to download official participation certificates for selected events.</p>
+          </div>
+        </div>
+
+        <h3 style="margin-top:16px">Events</h3>
+        <div class="events-grid" id="eventsGrid">
+          <div class="event-card" id="optisnapCard" title="OptiSnap - Participation Certificate">
+            <img src="optisnap.png" alt="OptiSnap Poster" />
+            <div class="title">OptiSnap</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: verification & generation flow -->
+      <aside class="flow" id="flowPanel" aria-live="polite">
+        <div style="display:flex;gap:10px;align-items:center;justify-content:space-between">
+          <div style="font-weight:800">Event:</div>
+          <div id="flowEventName" style="font-weight:700">Select event</div>
+        </div>
+
+        <div>
+          <label for="rollInput">Enter your Roll Number</label>
+          <input id="rollInput" type="text" placeholder="e.g. 25B11EC001" inputmode="text" autocomplete="off" />
+          <div style="display:flex;gap:8px;margin-top:8px">
+            <button id="checkRollBtn" class="btn">Check Roll</button>
+            <button id="themeToggle" class="btn" style="background:transparent;border:1px solid rgba(255,255,255,0.06);color:var(--text)">Theme</button>
+          </div>
+        </div>
+
+        <div class="msg" id="rollMessage"></div>
+
+        <div id="nameGroup" class="hidden">
+          <label for="nameInput">Please enter your name to get your participation certificate</label>
+          <input id="nameInput" type="text" placeholder="Your full name" autocomplete="name" />
+          <button id="generateBtn" class="btn">Generate Certificate</button>
+          <div class="msg" id="genMessage"></div>
+        </div>
+
+        <div class="muted" style="margin-top:8px;font-size:13px">
+          Note: Roll check is case-insensitive. Certificate generation stores a local flag to prevent double-download from the same browser for the same roll.
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <footer>© Official OPTICA • OPTIKA Student Chapter - Aditya University</footer>
+</div>
+
+<!-- ===== Libraries for PDF generation ===== -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+<!-- ============ Main JS (behavior, fetch, animations, generate) ============ -->
+<script>
+(function(){
+  // ---------- Config ----------
+  const PARTICIPANTS_CSV = 'participants.csv'; 
+  const CERT_TEMPLATE = 'OptiSnapCertificate.jpg';
+  const CURRENT_EVENT = 'OptiSnap';
+
+  let participantsMap = new Map(); 
+  let loaded = false;
+  let generatedRolls = new Set();
+  try{
+    const stored = JSON.parse(localStorage.getItem('optika_generated') || '[]');
+    if(Array.isArray(stored)) stored.forEach(r => generatedRolls.add(r));
+  }catch(e){}
+
+  function parseCSVText(text){
+    const rows = text.trim().split(/\r?\n/).map(r=>r.trim()).filter(Boolean);
+    if(rows.length === 0) return;
+    const headers = rows[0].split(',').map(h=>h.trim().toLowerCase());
+    const rollIdx = headers.indexOf('roll') >= 0 ? headers.indexOf('roll') : 0;
+    const nameIdx = headers.indexOf('name') >= 0 ? headers.indexOf('name') : 1;
+    for(let i=1;i<rows.length;i++){
+      const cols = rows[i].split(',');
+      const roll = (cols[rollIdx]||'').trim().toUpperCase();
+      const name = (cols[nameIdx]||'').trim();
+      if(roll) participantsMap.set(roll, name);
+    }
+  }
+
+  async function loadParticipants(){
+    try{
+      const res = await fetch(PARTICIPANTS_CSV, {cache: 'no-store'});
+      if(!res.ok) throw new Error('CSV not found');
+      const txt = await res.text();
+      parseCSVText(txt);
+      loaded = true;
+      console.log('Participants loaded:', participantsMap.size);
+    }catch(err){
+      console.warn('Could not load participants CSV. Make sure participants.csv exists or set PARTICIPANTS_CSV to your public Google Sheet CSV URL.', err);
+      loaded = false;
+    }
+  }
+
+  const heroTitle = document.getElementById('heroTitle');
+  const scrollHint = document.getElementById('scrollHint');
+  const mainContent = document.getElementById('mainContent');
+  const optisnapCard = document.getElementById('optisnapCard');
+  const flowEventName = document.getElementById('flowEventName');
+  const rollInput = document.getElementById('rollInput');
+  const checkRollBtn = document.getElementById('checkRollBtn');
+  const rollMessage = document.getElementById('rollMessage');
+  const nameGroup = document.getElementById('nameGroup');
+  const nameInput = document.getElementById('nameInput');
+  const generateBtn = document.getElementById('generateBtn');
+  const genMessage = document.getElementById('genMessage');
+  const navEvents = document.getElementById('navEvents');
+  const navRegs = document.getElementById('navRegs');
+  const themeToggle = document.getElementById('themeToggle');
+
+  function splitHeroText(){
+    const txt = heroTitle.textContent.trim();
+    const parts = txt.split(' ');
+    heroTitle.innerHTML = '';
+    parts.forEach((word, wi)=>{
+      const span = document.createElement('span');
+      span.className = 'word';
+      const letters = word.split('');
+      const sliceCount = 3;
+      const groupSize = Math.ceil(letters.length / sliceCount);
+      for(let s=0;s<sliceCount;s++){
+        const slice = document.createElement('span');
+        slice.className = 'laser-slice';
+        slice.style.display='inline-block';
+        slice.style.transitionDelay = (s*80)+'ms';
+        const partLetters = letters.slice(s*groupSize, (s+1)*groupSize).join('');
+        slice.textContent = partLetters;
+        span.appendChild(slice);
+      }
+      heroTitle.appendChild(span);
+      heroTitle.appendChild(document.createTextNode(' '));
+    });
+  }
+
+  function triggerLaserBreak(){
+    heroTitle.classList.add('laser-break');
+  }
+
+  function enableScrollReveal(){
+    let triggered = false;
+    window.addEventListener('scroll', ()=>{
+      if(triggered) return;
+      const y = window.scrollY || window.pageYOffset;
+      if(y > 20 || (window.innerHeight - document.documentElement.clientHeight) < 0){
+        triggered = true;
+        setTimeout(()=>triggerLaserBreak(), 150);
+        mainContent.style.opacity = 1;
+        mainContent.style.transform = 'translateY(0)';
+        scrollHint.style.opacity = 0;
+      }
+    }, {passive:true});
+  }
+
+  function openEvent(name){
+    flowEventName.textContent = name;
+    rollInput.value=''; rollMessage.textContent=''; hideNameGroup();
+    genMessage.textContent='';
+    document.getElementById('flowPanel').scrollIntoView({behavior:'smooth',block:'center'});
+  }
+
+  function hideNameGroup(){
+    nameGroup.classList.add('hidden');
+  }
+  function showNameGroup(){
+    nameGroup.classList.remove('hidden');
+    nameInput.focus();
+  }
+
+  function loadingDots(el){
+    el.innerHTML = 'Loading';
+    const span = document.createElement('span');
+    span.className='dots';
+    span.innerHTML = '<span class="dot"></span><span class="dot"></span><span class="dot"></span>';
+    el.appendChild(span);
+  }
+
+  async function checkRoll(){
+    const raw = rollInput.value.trim();
+    if(!raw){ rollMessage.textContent='Please enter your roll number.'; return; }
+    const roll = raw.toUpperCase();
+    rollMessage.innerHTML = '';
+    loadingDots(rollMessage);
+    if(!loaded) await loadParticipants();
+    setTimeout(()=>{
+      rollMessage.innerHTML = '';
+      if(!participantsMap.size){
+        rollMessage.textContent = 'Participant data not available. Upload participants.csv or set PARTICIPANTS_CSV to a public sheet URL.';
+        return;
+      }
+      const foundName = participantsMap.get(roll);
+      if(foundName){
+        if(generatedRolls.has(roll) || (localStorage.getItem('optika_generated') || '').includes(roll)){
+          rollMessage.innerHTML = '<span style="color:var(--danger);font-weight:700">Certificate already generated for this roll (browser-block).</span>';
+          hideNameGroup();
+          return;
+        }
+        rollMessage.innerHTML = '<span style="color:var(--success);font-weight:700">Roll found!</span> Enter your name to proceed.';
+        nameInput.value = foundName;
+        showNameGroup();
+      }else{
+        rollMessage.innerHTML = '<span style="color:var(--danger);font-weight:700">You are not participated in this event.</span>';
+        hideNameGroup();
+      }
+    },700);
+  }
+
+  function markGenerated(roll){
+    generatedRolls.add(roll);
+    const arr = Array.from(generatedRolls);
+    localStorage.setItem('optika_generated', JSON.stringify(arr));
+  }
+
+  async function generateCertificate(){
+    const rawRoll = rollInput.value.trim().toUpperCase();
+    const rawName = nameInput.value.trim();
+    if(!rawRoll || !rawName){ genMessage.textContent = 'Provide both roll and name.'; return; }
+    if(!participantsMap.has(rawRoll)){
+      genMessage.textContent = 'Roll not found in participant list.';
+      return;
+    }
+    if(generatedRolls.has(rawRoll)){
+      genMessage.textContent = 'Certificate already generated for this roll (blocked).';
+      return;
+    }
+
+    genMessage.innerHTML = 'Preparing certificate';
+    loadingDots(genMessage);
+
+    const w = 1200, h = 850;
+    const container = document.createElement('div');
+    container.style.width = w + 'px';
+    container.style.height = h + 'px';
+    container.style.position = 'fixed';
+    container.style.left = '-9999px';
+    container.style.top = '-9999px';
+    container.style.zIndex = '-9999';
+    container.style.fontFamily = "Georgia, 'Times New Roman', serif";
+    const img = document.createElement('img');
+    img.src = CERT_TEMPLATE;
+    img.style.width = '100%';
+    img.style.height = '100%';
+    img.style.display = 'block';
+    container.appendChild(img);
+    // overlay name
+    const nameDiv = document.createElement('div');
+    nameDiv.textContent = rawName;
+    nameDiv.style.position = 'absolute';
+    nameDiv.style.left = '0';
+    nameDiv.style.right = '0';
+    nameDiv.style.top = '383px'; 
+    nameDiv.style.textAlign = 'center';
+    nameDiv.style.fontSize = '40px';
+    nameDiv.style.fontWeight = '400'; 
+    nameDiv.style.fontFamily = "'Birthstone', cursive";
+    nameDiv.style.color = '#062b43';
+    nameDiv.style.padding = '0 40px';
+    container.appendChild(nameDiv);
+
+    // --------- ROLL NUMBER REMOVED: No roll meta section appended ---------
+
+    document.body.appendChild(container);
+
+    try{
+      await new Promise((res, rej)=>{
+        if(img.complete) return res();
+        img.onload = res; img.onerror = rej;
+      });
+    }catch(e){
+      console.warn('Template image load error', e);
+      genMessage.textContent = 'Could not load certificate template image. Check file path.';
+      container.remove();
+      return;
+    }
+
+    try{
+      const canvas = await html2canvas(container, {scale:2, useCORS:true, allowTaint:true, backgroundColor:null});
+      const imgData = canvas.toDataURL('image/png');
+      const { jsPDF } = window.jspdf;
+      const pdf = new jsPDF({orientation:'landscape', unit:'pt', format:[canvas.width, canvas.height]});
+      pdf.addImage(imgData, 'PNG', 0, 0, canvas.width, canvas.height);
+      const safeName = rawName.replace(/[^a-z0-9\-_\.]/gi,'_');
+      pdf.save('Certificate_'+safeName+'_'+rawRoll+'.pdf');
+      markGenerated(rawRoll);
+      genMessage.innerHTML = '<span style="color:var(--success);font-weight:700">Done:</span> Your certificate is downloading.';
+    }catch(err){
+      console.error(err);
+      genMessage.textContent = 'Error creating PDF. See console for details.';
+    }finally{
+      container.remove();
+    }
+  }
+
+  optisnapCard.addEventListener('click', ()=>{ openEvent(CURRENT_EVENT); navEvents.classList.add('active'); navRegs.classList.remove('active') });
+  checkRollBtn.addEventListener('click', checkRoll);
+  rollInput.addEventListener('keydown', (e)=>{ if(e.key === 'Enter') checkRoll(); });
+  generateBtn.addEventListener('click', generateCertificate);
+  nameInput.addEventListener('keydown', (e)=>{ if(e.key === 'Enter') generateCertificate(); });
+  navEvents.addEventListener('click', ()=>{ navEvents.classList.add('active'); navRegs.classList.remove('active'); document.getElementById('eventsGrid').scrollIntoView({behavior:'smooth',block:'center'})});
+  navRegs.addEventListener('click', ()=>{ navRegs.classList.add('active'); navEvents.classList.remove('active'); alert('Registrations page placeholder — you can connect a form or Google Sheet here.'); });
+  themeToggle.addEventListener('click', ()=>{
+    const body = document.body;
+    if(body.classList.contains('theme-a')) { body.classList.remove('theme-a'); body.classList.add('theme-b'); }
+    else if(body.classList.contains('theme-b')) { body.classList.remove('theme-b'); body.classList.add('theme-c'); }
+    else { body.classList.remove('theme-c'); body.classList.add('theme-a'); }
+  });
+
+  splitHeroText();
+  enableScrollReveal();
+  loadParticipants();
+  document.getElementById('scrollHint').addEventListener('click', ()=>{
+    window.scrollTo({top: window.innerHeight*0.4, behavior:'smooth'});
+  });
+  window._optika = { participantsMap, loadParticipants, generateCertificate, checkRoll };
+
+})();
+</script>
+</body>
+</html>

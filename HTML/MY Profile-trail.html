@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Arunkasi | Profile</title>
+  <style>
+    /* Global Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    /* Background Animation */
+    body {
+      background: #000;
+      color: #fff;
+      overflow-x: hidden;
+      position: relative;
+      animation: fadeIn 2s ease-in-out;
+    }
+
+    body::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle at 20% 30%, rgba(255,255,255,0.05), transparent 40%),
+                  radial-gradient(circle at 80% 70%, rgba(255,255,255,0.03), transparent 40%);
+      animation: moveBG 20s linear infinite;
+      z-index: -1;
+    }
+
+    @keyframes moveBG {
+      0% { transform: translate(0, 0); }
+      50% { transform: translate(-20px, 20px); }
+      100% { transform: translate(0, 0); }
+    }
+
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      padding: 60px 20px;
+      min-height: 100vh;
+    }
+
+    .profile-pic {
+      flex: 1;
+      text-align: center;
+      padding: 20px;
+    }
+
+    .profile-pic img {
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      border: 5px solid #00ffff;
+      box-shadow: 0 0 20px #00ffffaa;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+
+    .profile-pic img:hover {
+      transform: scale(1.05);
+    }
+
+    .intro-text {
+      flex: 2;
+      padding: 20px;
+      animation: slideInRight 1.5s ease;
+    }
+
+    .intro-text h1 {
+      font-size: 3rem;
+      color: #00ffff;
+      margin-bottom: 10px;
+    }
+
+    .intro-text p {
+      font-size: 1.2rem;
+      color: #ddd;
+    }
+
+    section {
+      padding: 40px 20px;
+      max-width: 900px;
+      margin: auto;
+      animation: fadeInUp 2s ease;
+    }
+
+    h2 {
+      border-left: 5px solid #00ffff;
+      padding-left: 15px;
+      margin-bottom: 15px;
+      color: #00ffff;
+    }
+
+    p, li {
+      font-size: 1rem;
+      line-height: 1.8;
+      color: #ccc;
+    }
+
+    ul {
+      padding-left: 20px;
+      margin-bottom: 20px;
+    }
+
+    a {
+      color: #00ffff;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    /* Animations */
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes slideInRight {
+      from {
+        opacity: 0;
+        transform: translateX(100px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .intro-text h1 {
+        font-size: 2rem;
+      }
+
+      .profile-pic img {
+        width: 150px;
+        height: 150px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <div class="profile-pic">
+      <img src="my pic 2.jpg" alt="Arunkasi Profile Picture">
+    </div>
+    <div class="intro-text">
+      <h1>Arunkasi Dommeti</h1>
+      <p>Engineering Graduate from Aditya University, passionate about working with MNC chip-making companies.</p>
+    </div>
+  </div>
+
+  <section>
+    <h2>My Skills</h2>
+    <ul>
+      <li>HTML</li>
+      <li>CSS</li>
+      <li>Python</li>
+      <li>JavaScript</li>
+      <li>React</li>
+      <li>Node.js</li>
+      <li>Verilog</li>
+      <li>VHDL</li>
+      <li>SQL</li>
+    </ul>
+
+    <h2>My Hobbies</h2>
+    <ul>
+      <li>Reading Books</li>
+      <li>Playing Cricket</li>
+      <li>Listening to Music</li>
+    </ul>
+
+    <h2>My Interests</h2>
+    <p>I'm interested in learning new technologies and improving my skills in software development.</p>
+    <p>I'm passionate about working as a Front-End VLSI Engineer.</p>
+
+    <h2>My Goals</h2>
+    <p>My goal is to become a proficient VLSI engineer and contribute to innovative projects in the tech industry.</p>
+
+    <h2>Contact Me</h2>
+    <p>Email: <a href="Mail to:i@gmail.com">si@gmail.com</a></p>
+    <p>Phone: +91 9951782436</p>
+    <p><a href="20/" target="_blank">LinkedIn Profile</a></p>
+  </section>
+
+</body>
+</html>
